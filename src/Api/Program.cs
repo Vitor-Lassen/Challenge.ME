@@ -1,6 +1,8 @@
 using Application;
 using Domain.Contracts.Application;
 using Domain.Contracts.Repositories;
+using Domain.Contracts.Services;
+using Domain.Service;
 using Infra.Provider;
 using Infra.Repositories;
 
@@ -10,8 +12,12 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddScoped<IOrderApplication,OrderApplication>();
 
+builder.Services.AddScoped<IOrderService, OrderService>();
+
 builder.Services.AddTransient(typeof(IBaseRepository<>), typeof(BaseRepository<>));
 builder.Services.AddScoped<IOrderRepository,OrderRepository>();
+builder.Services.AddScoped<IItemRepository,ItemRepository>();
+
 builder.Services.AddScoped<ContextDb>();
 
 
