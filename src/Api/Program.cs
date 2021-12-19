@@ -5,6 +5,9 @@ using Domain.Contracts.Services;
 using Domain.Service;
 using Infra.Provider;
 using Infra.Repositories;
+using Microsoft.AspNetCore.ResponseCompression;
+using Newtonsoft.Json;
+using System.IO.Compression;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -20,13 +23,36 @@ builder.Services.AddScoped<IItemRepository,ItemRepository>();
 
 builder.Services.AddScoped<ContextDb>();
 
-
-
-
-builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGenNewtonsoftSupport();
+
+
+builder.Services.Configure<GzipCompressionProviderOptions>(
+    options => options.Level = CompressionLevel.Optimal);
+
+builder.Services.AddResponseCompression(options =>
+{
+    options.Providers.Add<GzipCompressionProvider>();
+    options.EnableForHttps = true;
+});
+
+builder.Services.AddControllers()
+    .AddNewtonsoftJson(options =>
+    {
+        options.SerializerSettings.DateFormatHandling = DateFormatHandling.IsoDateFormat;
+        options.SerializerSettings.NullValueHandling = NullValueHandling.Ignore;
+        options.SerializerSettings.TypeNameHandling = TypeNameHandling.None;
+        options.SerializerSettings.MissingMemberHandling = MissingMemberHandling.Ignore;
+        options.SerializerSettings.Formatting = Formatting.None;
+        options.SerializerSettings.FloatFormatHandling = FloatFormatHandling.DefaultValue;
+        options.SerializerSettings.FloatParseHandling = FloatParseHandling.Double;
+        options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
+        options.SerializerSettings.PreserveReferencesHandling = PreserveReferencesHandling.None;
+        options.SerializerSettings.Culture = new System.Globalization.CultureInfo("en-US");
+        options.SerializerSettings.DateTimeZoneHandling = DateTimeZoneHandling.Local;
+    });
+
 
 var app = builder.Build();
 
