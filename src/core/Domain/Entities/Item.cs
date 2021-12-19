@@ -13,19 +13,16 @@ namespace Domain.Entities
         public string Description { get; set; }
         public double UnitPrice { get; set; }
         public int Amount { get; set; }
-        public string OrderId { get; set; }
-        public Order Order { get; set; }
+
         public Item(string? id = null)
         {
             Id = string.IsNullOrEmpty(id) ? Guid.NewGuid().ToString() : id;
         }
-        public Item(DTO.Item item, Order order) : this ()
+        public Item(DTO.Item item) : this (item.Id)
         {
             Description = item.Description;
             UnitPrice = item.UnitPrice;
             Amount = item.Amount;   
-            Order = order;
-            OrderId = Order.Id;
         }
         public override bool Equals(object? obj)
         {
@@ -35,8 +32,7 @@ namespace Domain.Entities
             if (Id == item.Id &&
                 Description == item.Description &&
                 UnitPrice == item.UnitPrice &&
-                Amount == item.Amount &&
-                OrderId == item.OrderId)
+                Amount == item.Amount)
                 return true;
             return false;
              

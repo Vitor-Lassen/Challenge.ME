@@ -4,6 +4,7 @@ namespace Domain.DTO
 {
     public class Item
     {
+        public virtual string Id { get; set; }
         [JsonProperty("descricao")]
         public string Description { get; set; }
         [JsonProperty("precoUnitario")]
@@ -16,6 +17,7 @@ namespace Domain.DTO
         }
         public Item(Entities.Item item)
         {
+            Id = item.Id;
             Description = item.Description;
             UnitPrice = item.UnitPrice; 
             Amount = item.Amount;
