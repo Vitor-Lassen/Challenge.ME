@@ -14,7 +14,7 @@ builder.Services.AddScoped<IOrderApplication,OrderApplication>();
 
 builder.Services.AddScoped<IOrderService, OrderService>();
 
-builder.Services.AddTransient(typeof(IBaseRepository<>), typeof(BaseRepository<>));
+builder.Services.AddTransient(typeof(IBaseRepository<,>), typeof(BaseRepository<,>));
 builder.Services.AddScoped<IOrderRepository,OrderRepository>();
 builder.Services.AddScoped<IItemRepository,ItemRepository>();
 

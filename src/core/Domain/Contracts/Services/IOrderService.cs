@@ -6,5 +6,8 @@ namespace Domain.Contracts.Services
     {
         void Insert(Order order);
         IEnumerable<Order> GetAll();
+        Order GetById(string orderId);
+        void Delete(string orderId);
+        void Update(Order order);
     }
 }

@@ -4,7 +4,7 @@ using System.Linq.Expressions;
 
 namespace Infra.Repositories
 {
-    public class BaseRepository<T> : IDisposable, IBaseRepository<T> where T : class
+    public class BaseRepository<T,Tkey> : IDisposable, IBaseRepository<T, Tkey> where T : class
     {
         protected readonly ContextDb _context;
         private bool disposed = false;
@@ -22,18 +22,18 @@ namespace Infra.Repositories
             _context.Set<T>().AddRange(entities);
             _context.SaveChanges();
         }
-
-        public IEnumerable<T> Find(Expression<Func<T, bool>> expression)
-        {
-            return _context.Set<T>().Where(expression);
-        }
         public IEnumerable<T> GetAll()
         {
             return _context.Set<T>().ToList();
         }
-        public T GetById(int id)
+        public T GetById(Tkey id)
         {
             return _context.Set<T>().Find(id);
+        }
+        public void Update (T entity)
+        {
+            _context.Update(entity);
+            _context.SaveChanges();
         }
         public void Remove(T entity)
         {
@@ -44,6 +44,10 @@ namespace Infra.Repositories
         {
             _context.Set<T>().RemoveRange(entities);
             _context.SaveChanges();
+        }
+        protected IEnumerable<T> Find(Expression<Func<T, bool>> expression)
+        {
+            return _context.Set<T>().Where(expression);
         }
         protected virtual void Dispose(bool disposing)
         {

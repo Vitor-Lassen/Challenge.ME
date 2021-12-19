@@ -1,14 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Domain.Contracts.Application
+﻿namespace Domain.Contracts.Application
 {
     public interface IOrderApplication
     {
-        void InsertOrder(DTO.Order order);
-        IEnumerable<DTO.Order> GetAllOrders();
+        void Insert(DTO.Order order);
+        IEnumerable<DTO.Order> GetAll();
+        DTO.Order GetbyId(string orderId);
+        void Update(DTO.Order order);
+        void Delete(string orderId);
     }
 }

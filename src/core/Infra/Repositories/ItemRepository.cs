@@ -4,7 +4,7 @@ using Infra.Provider;
 
 namespace Infra.Repositories
 {
-    public class ItemRepository : BaseRepository<Item>, IItemRepository
+    public class ItemRepository : BaseRepository<Item,string>, IItemRepository
     {
         public ItemRepository(ContextDb context) : base(context)
         {

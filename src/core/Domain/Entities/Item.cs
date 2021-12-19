@@ -27,6 +27,20 @@ namespace Domain.Entities
             Order = order;
             OrderId = Order.Id;
         }
+        public override bool Equals(object? obj)
+        {
+            if (!(obj is Item))
+                return false;
+            var item = (Item)obj;
+            if (Id == item.Id &&
+                Description == item.Description &&
+                UnitPrice == item.UnitPrice &&
+                Amount == item.Amount &&
+                OrderId == item.OrderId)
+                return true;
+            return false;
+             
+        }
 
     }
 }

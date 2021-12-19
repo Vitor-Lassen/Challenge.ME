@@ -13,37 +13,36 @@ namespace Api.Controllers
         {
             _orderApplication = orderApplication;
         }
-        // GET: api/<PedidoController>
         [HttpGet]
-        public IEnumerable<Order> Get()
+        public IEnumerable<Order> GetAll()
         {
-            return _orderApplication.GetAllOrders();
+            return _orderApplication.GetAll();
         }
 
-        // GET api/<PedidoController>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
+        [HttpGet("{orderId}")]
+        public Order Get(string orderId)
         {
-            return "value";
+            return _orderApplication.GetbyId(orderId);
         }
 
-        // POST api/<PedidoController>
         [HttpPost]
         public void Post([FromBody] Order order)
         {
-            _orderApplication.InsertOrder(order);
+            _orderApplication.Insert(order);
         }
 
         // PUT api/<PedidoController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        [HttpPut]
+        public void Put([FromBody] Order order)
         {
+             _orderApplication.Update(order);
         }
 
         // DELETE api/<PedidoController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
+        [HttpDelete("{orderId}")]
+        public void Delete(string orderId)
         {
+            _orderApplication.Delete(orderId);
         }
     }
 }

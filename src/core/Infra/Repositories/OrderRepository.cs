@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Infra.Repositories
 {
-    public class OrderRepository : BaseRepository<Order>, IOrderRepository
+    public class OrderRepository : BaseRepository<Order,string>, IOrderRepository
     {
         public OrderRepository(ContextDb contextDb) : base(contextDb) {}
     }

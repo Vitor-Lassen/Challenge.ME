@@ -2,7 +2,7 @@
 
 namespace Domain.Contracts.Repositories
 {
-    public interface IItemRepository : IBaseRepository<Item>
+    public interface IItemRepository : IBaseRepository<Item,string>
     {
         IEnumerable<Item> GetAllByOrder(string OrderId);
     }
