@@ -17,7 +17,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application", "src\core\App
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "utils", "utils", "{10FE2CF5-4578-4D87-BD67-1D77EE8E0F11}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Exceptions", "src\Exceptions\Exceptions.csproj", "{595EA477-2BF7-4C02-BF51-63182072D666}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Exceptions", "src\utils\Exceptions\Exceptions.csproj", "{595EA477-2BF7-4C02-BF51-63182072D666}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
