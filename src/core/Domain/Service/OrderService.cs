@@ -7,11 +7,9 @@ namespace Domain.Service
     public class OrderService : IOrderService
     {
         private readonly IOrderRepository _orderRepository;
-        private readonly IItemRepository _itemRepository;
-        public OrderService(IOrderRepository orderRepository, IItemRepository itemRepository)
+        public OrderService(IOrderRepository orderRepository)
         {
             _orderRepository = orderRepository;
-            _itemRepository = itemRepository;
         }
 
         public void Delete(string orderId)
@@ -21,18 +19,13 @@ namespace Domain.Service
 
         public IEnumerable<Order> GetAll()
         {
-            var orders = _orderRepository.GetAll();
-            foreach (var order in orders)
-            {
-                FillOrder(order);
-            }
-            return orders;
+            return _orderRepository.GetAll();
+        
         }
 
         public Order GetById(string orderId)
         {
-            var order = _orderRepository.GetById(orderId);
-            return order != null ? FillOrder(order): order;
+            return _orderRepository.GetById(orderId);
         }
 
         public void Insert(Order order)
@@ -62,12 +55,7 @@ namespace Domain.Service
             //    _itemRepository.Remove(item);
         }
 
-        private Order FillOrder(Order order)
-        {
-            order.Items = _itemRepository.GetAllByOrder(order.Id);
 
-            return order;
-        }
         
     }
 }

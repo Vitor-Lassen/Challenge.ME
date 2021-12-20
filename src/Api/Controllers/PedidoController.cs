@@ -28,7 +28,7 @@ namespace Api.Controllers
         [HttpPost]
         public void Post([FromBody] Order order)
         {
-            _orderApplication.Insert(order);
+                _orderApplication.Insert(order);
         }
 
         // PUT api/<PedidoController>/5

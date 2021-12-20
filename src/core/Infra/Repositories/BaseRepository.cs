@@ -1,6 +1,5 @@
 ﻿using Domain.Contracts.Repositories;
 using Infra.Provider;
-using System.Linq.Expressions;
 
 namespace Infra.Repositories
 {
@@ -22,32 +21,32 @@ namespace Infra.Repositories
             _context.Set<T>().AddRange(entities);
             _context.SaveChanges();
         }
-        public IEnumerable<T> GetAll()
+        public virtual IEnumerable<T> GetAll()
         {
             return _context.Set<T>().ToList();
         }
-        public T GetById(Tkey id)
+        public virtual T GetById(Tkey id)
         {
             return _context.Set<T>().Find(id);
         }
-        public void Update (T entity)
+        public virtual void Update (T entity)
         {
-            _context.Update(entity);
+            _context.Set<T>().Update(entity);
             _context.SaveChanges();
         }
-        public void Remove(T entity)
+        public virtual void Remove(T entity)
         {
             _context.Set<T>().Remove(entity);
             _context.SaveChanges();
         }
-        public void RemoveRange(IEnumerable<T> entities)
+        public virtual void RemoveRange(IEnumerable<T> entities)
         {
             _context.Set<T>().RemoveRange(entities);
             _context.SaveChanges();
         }
-        protected IEnumerable<T> Find(Expression<Func<T, bool>> expression)
+        protected virtual IQueryable<T> Query()
         {
-            return _context.Set<T>().Where(expression);
+            return _context.Set<T>().AsQueryable();
         }
         protected virtual void Dispose(bool disposing)
         {

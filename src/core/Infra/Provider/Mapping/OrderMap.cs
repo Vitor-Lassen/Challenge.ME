@@ -9,11 +9,7 @@ namespace Infra.Provider.Mapping
         public void Configure(EntityTypeBuilder<Order> builder)
         {
             builder.HasKey(b => b.Id);
-            builder.HasMany(b => b.Items)
-                   .WithOne(e=> e.Order)
-                   .HasForeignKey(k => k.OrderId)
-                   .OnDelete(DeleteBehavior.Cascade)
-                   .IsRequired();
+            builder.HasMany(b => b.Items);
         }
     }
 }

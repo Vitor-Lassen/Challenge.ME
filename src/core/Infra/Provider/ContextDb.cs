@@ -1,5 +1,7 @@
 ﻿using Infra.Provider.Mapping;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Diagnostics;
+using Microsoft.Extensions.Logging;
 
 namespace Infra.Provider
 {
@@ -7,9 +9,11 @@ namespace Infra.Provider
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
+            
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseInMemoryDatabase("mem");
+                optionsBuilder.LogTo(Console.WriteLine);
+                optionsBuilder.UseSqlServer(@"Server =(localdb)\MSSQLLocalDB; Database = db_lassen; Trusted_Connection = True; ");
             }
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)

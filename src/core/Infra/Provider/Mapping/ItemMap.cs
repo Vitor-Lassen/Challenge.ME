@@ -12,12 +12,6 @@ namespace Infra.Provider.Mapping
             builder.Property(b => b.Description);
             builder.Property(b => b.Amount);
             builder.Property(b => b.UnitPrice);
-            builder.Property(b => b.OrderId);
-            builder.HasOne(o => o.Order)
-                   .WithMany(m => m.Items)
-                   .HasForeignKey(o => o.OrderId)
-                   .OnDelete(DeleteBehavior.Cascade)
-                   .IsRequired();
 
         }
     }

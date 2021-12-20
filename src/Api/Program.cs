@@ -5,6 +5,7 @@ using Domain.Contracts.Services;
 using Domain.Service;
 using Infra.Provider;
 using Infra.Repositories;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.ResponseCompression;
 using Newtonsoft.Json;
 using System.IO.Compression;
@@ -19,7 +20,6 @@ builder.Services.AddScoped<IOrderService, OrderService>();
 
 builder.Services.AddTransient(typeof(IBaseRepository<,>), typeof(BaseRepository<,>));
 builder.Services.AddScoped<IOrderRepository,OrderRepository>();
-builder.Services.AddScoped<IItemRepository,ItemRepository>();
 
 builder.Services.AddScoped<ContextDb>();
 
@@ -53,6 +53,10 @@ builder.Services.AddControllers()
         options.SerializerSettings.DateTimeZoneHandling = DateTimeZoneHandling.Local;
     });
 
+builder.Services.Configure<ApiBehaviorOptions>(options =>
+{
+    options.SuppressModelStateInvalidFilter = true;
+});
 
 var app = builder.Build();
 
