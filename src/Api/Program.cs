@@ -1,3 +1,4 @@
+using Api.Config;
 using Application;
 using Domain.Contracts.Application;
 using Domain.Contracts.Repositories;
@@ -72,7 +73,7 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
-
+app.UseMiddleware<MiddlewareError>();
 app.MapControllers();
 
 app.Run();
