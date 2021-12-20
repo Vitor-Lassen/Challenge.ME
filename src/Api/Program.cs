@@ -15,8 +15,10 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 
 builder.Services.AddScoped<IOrderApplication,OrderApplication>();
+builder.Services.AddScoped<IStatusApplication,StatusApplication>();
 
 builder.Services.AddScoped<IOrderService, OrderService>();
+builder.Services.AddScoped<IStatusService, StatusService>();
 
 builder.Services.AddTransient(typeof(IBaseRepository<,>), typeof(BaseRepository<,>));
 builder.Services.AddScoped<IOrderRepository,OrderRepository>();

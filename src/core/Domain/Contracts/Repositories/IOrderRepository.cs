@@ -4,5 +4,6 @@ namespace Domain.Contracts.Repositories
 {
     public interface IOrderRepository : IBaseRepository<Order,string>
     {
+
     }
 }

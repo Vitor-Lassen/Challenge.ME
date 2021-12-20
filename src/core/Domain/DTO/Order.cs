@@ -6,6 +6,7 @@ namespace Domain.DTO
     {
         [JsonProperty("pedido")]
         public string Id { get; set; }
+        [JsonProperty("itens")]
         public IEnumerable<Item> Items { get; set; }
         public Order()
         {

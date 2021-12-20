@@ -12,7 +12,7 @@ namespace Domain.Entities
         public string Id { get; set; } 
         public string Description { get; set; }
         public double UnitPrice { get; set; }
-        public int Amount { get; set; }
+        public int Qtd { get; set; }
 
         public Item(string? id = null)
         {
@@ -22,7 +22,7 @@ namespace Domain.Entities
         {
             Description = item.Description;
             UnitPrice = item.UnitPrice;
-            Amount = item.Amount;   
+            Qtd = item.Qtd;   
         }
         public override bool Equals(object? obj)
         {
@@ -32,7 +32,7 @@ namespace Domain.Entities
             if (Id == item.Id &&
                 Description == item.Description &&
                 UnitPrice == item.UnitPrice &&
-                Amount == item.Amount)
+                Qtd == item.Qtd)
                 return true;
             return false;
              

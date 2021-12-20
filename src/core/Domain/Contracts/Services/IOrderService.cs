@@ -1,4 +1,5 @@
 ﻿using Domain.Entities;
+using Domain.VO;
 
 namespace Domain.Contracts.Services
 {
@@ -9,5 +10,6 @@ namespace Domain.Contracts.Services
         Order GetById(string orderId);
         void Delete(string orderId);
         void Update(Order order);
+        TotalOrder GetTotalOrder(string orderId);
     }
 }

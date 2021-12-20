@@ -10,7 +10,7 @@ namespace Infra.Provider.Mapping
         {
             builder.HasKey(b => b.Id);
             builder.Property(b => b.Description);
-            builder.Property(b => b.Amount);
+            builder.Property(b => b.Qtd);
             builder.Property(b => b.UnitPrice);
 
         }

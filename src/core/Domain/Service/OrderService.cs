@@ -1,6 +1,7 @@
 ﻿using Domain.Contracts.Repositories;
 using Domain.Contracts.Services;
 using Domain.Entities;
+using Domain.VO;
 
 namespace Domain.Service
 {
@@ -38,7 +39,21 @@ namespace Domain.Service
         {
             _orderRepository.Update(order);
         }
+        public TotalOrder GetTotalOrder(string orderId)
+        {
+            var order = GetById(orderId);
+            if (order == null)
+                return null;
+            var totalOrder = new TotalOrder(orderId);
 
+            foreach(Item item in order.Items)
+            {
+                var amount = item.UnitPrice * item.Qtd;
+                totalOrder.Amount += amount;
+                totalOrder.Qtd += item.Qtd;
+            }
+            return totalOrder;
+        }
 
         
     }

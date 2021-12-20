@@ -10,7 +10,7 @@ namespace Domain.DTO
         [JsonProperty("precoUnitario")]
         public double UnitPrice { get; set; }
         [JsonProperty("qtd")]
-        public int Amount { get; set; }
+        public int Qtd { get; set; }
         public Item()
         {
             
@@ -20,7 +20,7 @@ namespace Domain.DTO
             Id = item.Id;
             Description = item.Description;
             UnitPrice = item.UnitPrice; 
-            Amount = item.Amount;
+            Qtd = item.Qtd;
         }
     }
 }
