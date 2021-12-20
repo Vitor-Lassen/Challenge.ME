@@ -24,8 +24,8 @@ namespace Application
         {
             var totalOrder = _orderService.GetTotalOrder(statusRequest.OrderId);
             if (totalOrder == null)
-                return new StatusResponse(new List<string>() { "CODIGO_PEDIDO_INVALIDO" });
-            return new StatusResponse(_statusService.Validate(totalOrder, statusRequest));
+                return new StatusResponse(statusRequest.OrderId, new List<string>() { "CODIGO_PEDIDO_INVALIDO" });
+            return new StatusResponse(statusRequest.OrderId, _statusService.Validate(totalOrder, statusRequest));
 
         }
 
