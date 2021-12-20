@@ -30,6 +30,8 @@ namespace Api.Config
 
             if (exception is AlredyExistsException)
                 code = HttpStatusCode.Conflict;
+            else if (exception is NotFoundException)
+                code = HttpStatusCode.NotFound;
             else
             {
                 code = HttpStatusCode.InternalServerError;

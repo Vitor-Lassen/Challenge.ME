@@ -2,6 +2,7 @@
 using Domain.Contracts.Services;
 using Domain.Entities;
 using Domain.VO;
+using Exceptions;
 
 namespace Domain.Service
 {
@@ -15,7 +16,10 @@ namespace Domain.Service
 
         public void Delete(string orderId)
         {
-            _orderRepository.Remove(GetById(orderId));
+            var result = GetById(orderId);
+            if (result == null)
+                throw new NotFoundException("pedido",orderId);
+            _orderRepository.Remove(result);
         }
 
         public IEnumerable<Order> GetAll()
