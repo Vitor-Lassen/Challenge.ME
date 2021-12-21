@@ -17,7 +17,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application", "src\core\App
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "utils", "utils", "{10FE2CF5-4578-4D87-BD67-1D77EE8E0F11}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Exceptions", "src\utils\Exceptions\Exceptions.csproj", "{595EA477-2BF7-4C02-BF51-63182072D666}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Exceptions", "src\utils\Exceptions\Exceptions.csproj", "{595EA477-2BF7-4C02-BF51-63182072D666}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{88936E70-2B11-417C-9C96-E597D829DFAE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTests", "src\UnitTests\UnitTests.csproj", "{CF32B102-F2F5-4E9F-BD47-627A7D22B8B0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +49,10 @@ Global
 		{595EA477-2BF7-4C02-BF51-63182072D666}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{595EA477-2BF7-4C02-BF51-63182072D666}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{595EA477-2BF7-4C02-BF51-63182072D666}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CF32B102-F2F5-4E9F-BD47-627A7D22B8B0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CF32B102-F2F5-4E9F-BD47-627A7D22B8B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CF32B102-F2F5-4E9F-BD47-627A7D22B8B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CF32B102-F2F5-4E9F-BD47-627A7D22B8B0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -55,6 +63,7 @@ Global
 		{6420F2C7-63D6-428D-B653-FB680CF4A91E} = {988F46BE-8316-4CAE-8EA1-EBC9F6A7E492}
 		{9ED4ED75-2862-4561-B809-1319DB34D5B0} = {988F46BE-8316-4CAE-8EA1-EBC9F6A7E492}
 		{595EA477-2BF7-4C02-BF51-63182072D666} = {10FE2CF5-4578-4D87-BD67-1D77EE8E0F11}
+		{CF32B102-F2F5-4E9F-BD47-627A7D22B8B0} = {88936E70-2B11-417C-9C96-E597D829DFAE}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {53B12B27-5C01-439F-A3E5-9373A41007EA}

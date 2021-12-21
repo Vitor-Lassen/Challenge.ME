@@ -35,7 +35,8 @@ namespace Domain.Service
 
         public void Insert(Order order)
         {
-
+            if (GetById(order.Id) != null)
+                throw new AlredyExistsException("Pedido", order.Id);
             _orderRepository.Add(order);
         }
 

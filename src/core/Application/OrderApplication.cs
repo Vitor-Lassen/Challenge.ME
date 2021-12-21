@@ -1,7 +1,6 @@
 ﻿using Domain.Contracts.Application;
 using Domain.Contracts.Services;
 using Domain.Entities;
-using Exceptions;
 using DTO = Domain.DTO;
 
 namespace Application
@@ -33,10 +32,7 @@ namespace Application
 
         public void Insert(DTO.Order order)
         {
-            if(GetbyId(order.Id) != null)
-                throw new AlredyExistsException("Pedido",order.Id);
-            _orderService.Insert(new Order(order));
-           
+            _orderService.Insert(new Order(order)); 
         }
 
         public void Update(DTO.Order order)
